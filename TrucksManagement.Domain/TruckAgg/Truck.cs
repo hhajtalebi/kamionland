@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Domain;
 using TrucksManagement.Domain.TruckCategoryAgg;
+using TrucksManagement.Domain.TruckPictureAgg;
 
 namespace TrucksManagement.Domain.TruckAgg
 {
@@ -29,7 +30,7 @@ namespace TrucksManagement.Domain.TruckAgg
         public long CategoryId { get; private set; }
 
         public TruckCategory Category { get; private set; }
-
+        public List<TruckPicture> TruckPictures { get; private set; }
 
         public Truck(string name, string shortDescription, string description, string code, 
             long truckModel, string color, bool hasColor, int year, string manufacturer, string picture,
