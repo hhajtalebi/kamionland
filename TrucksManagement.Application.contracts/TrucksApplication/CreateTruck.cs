@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace TrucksManagement.Application.contracts.TrucksApplication
 {
@@ -18,7 +19,7 @@ namespace TrucksManagement.Application.contracts.TrucksApplication
         public bool HasColor { get; set; }
         public int Year { get; set; }
         public string Manufacturer { get; set; }
-        public string Picture { get; set; }
+        public IFormFile Picture { get; set; }
         public string PrictureAlte { get; set; }
         public string PictureTitel { get; set; }
         public string Keywords { get;  set; }

@@ -17,4 +17,8 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\0_Framework\0_Framework.csproj" />
+	  <ProjectReference Include="..\TrucksManagement.Domain\TrucksManagement.Domain.csproj" />
+	</ItemGroup>
 </Project>

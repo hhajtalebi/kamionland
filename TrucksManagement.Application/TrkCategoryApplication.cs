@@ -22,6 +22,10 @@ namespace TrucksManagement.Application
         public OperationResulte Create(CreateTrkCategory command)
         {
             OperationResulte resulte = new OperationResulte();
+            if (_truckCategoryRepository.Exists(x=>x.Name==command.Name))
+            {
+                return resulte.Failed(ApplicationMeasages.DuplicatedRecord);
+            }
             var slug=command.Slug.Slugify();
             var pathFilePicture = $"Picture";
             var fileName = _fileUploader.Upload(command.Picture, pathFilePicture);
@@ -42,6 +46,10 @@ namespace TrucksManagement.Application
             var category = _truckCategoryRepository.GetById(command.Id);
             if (category == null)
                 return resulte.Failed(ApplicationMeasages.RecordNotFound);
+            if (_truckCategoryRepository.Exists(x => category.Name == command.Name&&category.Id!=command.Id))
+            {
+                return resulte.Failed(ApplicationMeasages.DuplicatedRecord);
+            }
             var slug = command.Slug.Slugify();
             var pathFilePicture = $"Picture";
             var fileName = _fileUploader.Upload(command.Picture, pathFilePicture);
@@ -53,12 +61,12 @@ namespace TrucksManagement.Application
 
         public EditTrkCategory GetDetailes(long id)
         {
-            throw new NotImplementedException();
+            return _truckCategoryRepository.GetDetailes(id);
         }
 
         public List<TrkCategoryViewModel> GetTrkCategorys()
         {
-            throw new NotImplementedException();
+            return _truckCategoryRepository.GetTrkCategorys();
         }
     }
 }

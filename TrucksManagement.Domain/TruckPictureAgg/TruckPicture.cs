@@ -16,15 +16,15 @@ namespace TrucksManagement.Domain.TruckPictureAgg
         public string PictureTitel { get; private set; }
         public bool IsDelete { get; private set; }
 
-        public Truck Truck { get;private set}
+        public Truck Truck { get; private set; }
         public TruckPicture(long truckId, string picture,
-            string pictureAlte, string pictureTitel, bool isDelete)
+            string pictureAlte, string pictureTitel)
         {
             TruckId = truckId;
             Picture = picture;
             PictureAlte = pictureAlte;
             PictureTitel = pictureTitel;
-            IsDelete = isDelete;
+            IsDelete = false;
         }
         public void Edit(long truckId, string picture, string pictureAlte, string pictureTitel)
         {
