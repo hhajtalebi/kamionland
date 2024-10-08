@@ -26,7 +26,7 @@ namespace TrucksManagement.Application
         {
             OperationResulte resulte = new OperationResulte();
              var slug= command.Slug.Slugify();
-             var pathFilePicture = $"Picture";
+             var pathFilePicture = $"Truck";
              var filePictureName = _fileUploader.Upload(command.Picture,pathFilePicture);
              var truck = new Truck(command.Name, command.ShortDescription, command.Description, command.Code,
                  command.TruckModel, command.color, command.HasColor, command.Year, command.Manufacturer,

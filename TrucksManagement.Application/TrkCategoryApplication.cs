@@ -27,7 +27,7 @@ namespace TrucksManagement.Application
                 return resulte.Failed(ApplicationMeasages.DuplicatedRecord);
             }
             var slug=command.Slug.Slugify();
-            var pathFilePicture = $"Picture";
+            var pathFilePicture = $"TruckCategory";
             var fileName = _fileUploader.Upload(command.Picture, pathFilePicture);
             var TrkCategory = new TruckCategory(command.Name, command.Description, fileName, command.PictureAlt,
                 command.PictureTitel, command.keyword, command.MetaDescription, slug, command.ParentId);

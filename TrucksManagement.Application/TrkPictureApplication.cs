@@ -27,7 +27,7 @@ namespace TrucksManagement.Application
         public OperationResulte Create(CreateTrkPicture command)
         {
             OperationResulte resulte = new OperationResulte();
-            var pathFileName = $"Picture";
+            var pathFileName = $"TruckPicture";
             var FileName = _fileUploader.Upload(command.Picture, pathFileName);
             var picture = new TruckPicture(command.TruckId, FileName, command.PictureAlte, command.PictureTitel);
             _truckPictureRepository.Create(picture);
