@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using TrucksManagement.Application.contracts.TrucksApplication;
 using TrucksManagement.Domain.TruckAgg;
 using TrucksManagement.Domain.TruckCategoryAgg;
 using TrucksManagement.Domain.TruckPictureAgg;
+using TrucksManagement.Infrustructuer.EfCore;
 using TrucksManagement.Infrustructuer.EfCore.Repository;
 
 namespace TrucksManagement.Configuration
@@ -26,6 +28,9 @@ namespace TrucksManagement.Configuration
             services.AddScoped<ITruckCategoryRepository, TrkCategoryRepository>();
             services.AddScoped<ITruckPictureRepository, TrkPictureRepository>();
             services.AddScoped<ITruckRepository, TruckRepository>();
+
+            services.AddDbContext<TrcksContext>(x => x.UseSqlServer(contectionString));
+
         }
     }
 }

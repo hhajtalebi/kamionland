@@ -16,13 +16,14 @@ namespace AccountManagement.Configuration
     {
         public static void Configure(IServiceCollection services, string connectionString)
         {
-            services.AddTransient<IAccountApplication, AccountApplication>();
-            services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddScoped<IAccountApplication, AccountApplication>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
 
-            services.AddTransient<IRoleApplication, RoleApplication>();
-            services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleApplication, RoleApplication>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
 
             services.AddScoped<IPermissionExposer, AccountPermissionExposer>();
+
             services.AddDbContext<AccountContext>(x => x.UseSqlServer(connectionString));
         }
     }

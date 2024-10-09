@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Pictures\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\0_Framework\0_Framework.csproj" />
+    <ProjectReference Include="..\AccountManagement.Configuration\AccountManagement.Configuration.csproj" />
+    <ProjectReference Include="..\BlogManagement.Configuration\BlogManagement.Configuration.csproj" />
+    <ProjectReference Include="..\CommentManagement.Configuration\CommentManagement.Configuration.csproj" />
+    <ProjectReference Include="..\DiscountManegment.Configuration\DiscountManegment.Configuration.csproj" />
+    <ProjectReference Include="..\InventoryManegment.Configuration\InventoryManegment.Configuration.csproj" />
+    <ProjectReference Include="..\SlideManagement.Infrastucture.Configuration\SlideManagement.Infrastucture.Configuration.csproj" />
+    <ProjectReference Include="..\TrucksManagement.Configuration\TrucksManagement.Configuration.csproj" />
+  </ItemGroup>
+
+</Project>
