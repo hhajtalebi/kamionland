@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TrucksManagement.Application.contracts\TrucksManagement.Application.contracts.csproj" />
+    <ProjectReference Include="..\TrucksManagement.Infrustructuer.EfCore\TrucksManagement.Infrustructuer.EfCore.csproj" />
+  </ItemGroup>
+
+</Project>

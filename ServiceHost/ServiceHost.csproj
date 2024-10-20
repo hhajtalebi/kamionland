@@ -11,7 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
+
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
   </ItemGroup>
 
@@ -22,6 +29,7 @@
     <ProjectReference Include="..\CommentManagement.Configuration\CommentManagement.Configuration.csproj" />
     <ProjectReference Include="..\DiscountManegment.Configuration\DiscountManegment.Configuration.csproj" />
     <ProjectReference Include="..\InventoryManegment.Configuration\InventoryManegment.Configuration.csproj" />
+    <ProjectReference Include="..\KamionLandQuery\KamionLandQuery.csproj" />
     <ProjectReference Include="..\SlideManagement.Infrastucture.Configuration\SlideManagement.Infrastucture.Configuration.csproj" />
     <ProjectReference Include="..\TrucksManagement.Configuration\TrucksManagement.Configuration.csproj" />
   </ItemGroup>
