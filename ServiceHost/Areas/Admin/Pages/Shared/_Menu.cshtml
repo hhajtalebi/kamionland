@@ -1,0 +1,113 @@
+﻿@using _0_Framework.Application.AuthHelper
+@using _0_Framework.Infrastructure
+@using AccountManagement.Configuration.Permission
+@using AccountManagement.Domain.RoleAgg
+@using BlogManagement.Configuration.Permission
+@using DiscountManegment.Configuration.Permissions
+@using InventoryManegment.Configuration.Permissions
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ShopManagement.Configuration.Permissions
+@inject IAuthHelper AuthHelper;
+@{
+    var currentAccout = AuthHelper.CurrentAccountInfo();
+}
+
+<div class="side-menu-container">
+    <div class="sidebar-top">
+        <div class="search-box">
+            <form class="search-form" action="#" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control placeholder-light" placeholder="جستجو..." name="key">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-round submit">
+                            <i class="icon-magnifier"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div><!-- /.search-box -->
+       
+        <div class="user-box">
+            <div class="user-details">
+          
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@currentAccout.Fullname <span class="caret"></span></a>
+
+                <ul class="dropdown-menu dropdown-status">
+                    <li>
+                        <a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile
+                            <div class="ripple-wrapper"></div></a></li>
+                    <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
+                    <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
+                    <li><a href="javascript:void(0)"><i class="md md-settings-power"></i> Logout</a></li>
+                </ul>
+          
+
+                <p class="text-muted m-0">@currentAccout.Role</p>
+            </div>
+        </div>
+    </div>
+    <!--- Divider -->
+    <div class="side-menu-container">
+        <ul>
+            <li>
+                <a asp-page="/Index" class="waves-effect active"><i class="md md-home"></i><span> داشبورد </span></a>
+            </li>
+
+            <li>
+                <a asp-page="/Comments/Index" class="waves-effect"><i class="md  md-question-answer"></i><span> کامنت ها </span></a>
+            </li>
+
+
+            <li permission-tag="@InventoryPermissions.ListInventory">
+                <a asp-page="/Inventory/Index" class="waves-effect"><i class="md  md-assignment-turned-in"></i><span> انبارداری </span></a>
+            </li>
+            <li>
+                <a asp-page="/store/Index" class="waves-effect"><i class="md    md-add-shopping-cart"></i><span> فروش </span></a>
+            </li>
+            <li>
+                <a asp-page="/Credit/Index" class="waves-effect"><i class="md  md-credit-card"></i><span> دفتر نسیه </span></a>
+            </li>
+            <li>
+                <a asp-page="/Shop/Orders/Index" class="waves-effect"><i class="md  md-assignment"></i><span> سفارشات </span></a>
+            </li>
+            <li class="has_sub" permission-tag="@ShopPermissions.ListProducts">
+                <a class="waves-effect"><i class="md md-store"></i><span> فروشگاه </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a asp-page="/Shop/Slides/Index">اسلایدر</a></li>
+                    <li><a asp-page="/Shop/ProductCategories/Index">گروه محصولات</a></li>
+                    <li><a asp-page="/Shop/Products/Index">محصولات</a></li>
+                    <li><a asp-page="/Shop/ProductPictures/Index">عکس محصولات</a></li>
+                </ul>
+            </li>
+
+            <li class="has_sub" permission-tag="@DiscountPermissions.ListCustomerDiscount">
+                <a class="waves-effect"><i class="md  md-speaker-notes"></i><span> سیستم تخفیفات </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a asp-page="/Discounts/CustomerDiscounts/Index">تخفیف مشتری</a></li>
+                    <li><a asp-page="/Discounts/ColleagueDiscounts/Index">تخفیف همکاری</a></li>
+                </ul>
+            </li>
+            <li class="has_sub" permission-tag="@AccountPermissions.ListAccount">
+                <a class="waves-effect"><i class="md  md-account-circle"></i><span> سیستم کاربران </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a asp-page="/Accounts/Account/Index">کاربران</a></li>
+                    <li><a asp-page="/Accounts/Role/Index">نقش ها</a></li>
+                </ul>
+            </li>
+
+            <li class="has_sub" permission-tag="@BlogPermissions.ListArticel">
+                <a class="waves-effect"><i class="md md-description"></i><span> سیستم بلاگینگ </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                <ul class="list-unstyled">
+                    <li><a asp-page="/Blog/Articles/Index">مقالات</a></li>
+                    <li><a asp-page="/Blog/ArticleCategories/Index">گروه مقالات</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a asp-page="/Account/Index" asp-page-handler="Logout" class="waves-effect active"><i class="fa fa-sign-out"></i><span> خروج </span></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>

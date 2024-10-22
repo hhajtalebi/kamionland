@@ -1,0 +1,49 @@
+﻿@page
+@using _0_Framework.Application
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ServiceHost.Areas.Administration.Pages.Accounts.Role.CreateModel
+
+<div id="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="breadcrumb-box shadow">
+                <ul class="breadcrumb">
+                    <li><a href="/Admin/Dashboard">پیشخوان</a></li>
+                    <li><a href="#">تنظیمات </a></li>
+                    <li class="active">   افزودن دسترسی ها  </li>
+                </ul>
+                <div class="breadcrumb-left">
+                    @DateTime.Now.ToFarsiFull()
+                    <i class="icon-calendar"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mx-auto">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">ایجاد نقش جدید</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-md-126">
+                                        <div class="form-group">
+                                            <label asp-for="Command.Name" class="control-label">نام</label>
+                                            <input type="text" class="form-control" asp-for="Command.Name">
+                                            <span asp-validation-for="Command.Name" class="error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info waves-effect waves-light">ایجاد</button>
+                                <a asp-page="./Index" class="btn btn-dark waves-effect waves-light m-b-5">بازگشت</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

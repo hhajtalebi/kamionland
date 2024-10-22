@@ -1,0 +1,114 @@
+﻿@page
+@using _0_Framework.Application
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ServiceHost.Areas.Admin.Pages.Blog.Articles.IndexModel
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["title"] = "مدیریت مقالات";
+}
+
+<div id="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="breadcrumb-box shadow">
+                <ul class="breadcrumb">
+                    <li><a href="/Admin/Dashboard">پیشخوان</a></li>
+                    <li><a href="#" class="active">مقالات </a></li>
+                  
+                </ul>
+                <div class="breadcrumb-left">
+                    @DateTime.Now.ToFarsiFull()
+                    <i class="icon-calendar"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="portlet box shadow">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h3 class="title">
+                            <i class="icon-frane"></i>
+                            لیست  مقالات  (@Model.Articles.Count)
+                        </h3>
+                    </div>
+                    <div class="buttons-box">
+                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip" title="تمام صفحه" href="#">
+                            <i class="icon-size-fullscreen"></i>
+                        </a>
+                        <a class="btn btn-sm btn-default btn-round btn-collapse" rel="tooltip" title="کوچک کردن" href="#">
+                            <i class="icon-arrow-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <div class="stat-box use-blue shadow">
+                                <a asp-page="./Create">
+                                    <div class="stat">
+                                        <div class="counter-down" data-value="1024">
+
+                                            <div class="num"></div>
+                                            <div class="num"></div>
+                                            <div class="num"></div>
+                                            <div class="num"></div>
+                                        </div>
+                                        <div class="h3">افزودن   </div>
+                                    </div><!-- /.stat -->
+                                    <div class="visual">
+                                        <i class="fas fa-plus"></i>
+                                    </div><!-- /.visual -->
+                                </a>
+                            </div><!-- /.stat-box -->
+                        </div><!-- /.col-lg-3 -->
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table class="table table-bordered table-hover table-striped" id="data-table">
+
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        @* <th>عکس</th> *@
+                                        <th>عنوان</th>
+                                        <th>گروه</th>
+                                        <th>توضیحات کوتاه</th>
+                                        <th>تاریخ انتشار</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var item in Model.Articles)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                           @*  <td>
+                                                <img src="~/Pictures/@item.Picturethum" style="width: 70px; height: 70px" />
+                                            </td> *@
+                                            <td>@item.Title</td>
+                                            <td>@item.articelCategory</td>
+                                            <td>@item.ShortDescription.Substring(0,Math.Min(@item.ShortDescription.Length,50))<span class="text-primary">......</span></td>
+                                            <td>@item.PublishDate</td>
+                                            <td>
+                                                <a class="btn btn-warning pull-right m-rl-5" asp-page="./Edit" asp-route-id="@item.Id">
+                                                    <i class="fa fa-edit"></i> ویرایش
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
