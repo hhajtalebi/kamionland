@@ -1,0 +1,117 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model SlideManagement.Applicaion.Contracts.SlideApplication.EditSlideApplication
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">ویرایش اسلاید: @Model.Heading</h4>
+</div>
+
+<form asp-page="./Index" asp-page-handler="Edit"
+      method="post"
+      data-ajax="true"
+      data-callback=""
+      data-action="Refresh"
+      enctype="multipart/form-data">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="control-label">دسته بندی</label>
+                    <select type="text" class="form-control" asp-for="CategoryId" asp-items='new SelectList(Model.ListCategoresp,"Id","Name")'>
+                        <option value="0">انتخاب دسته بندی ....</option>
+
+                    </select>
+                    <span asp-validation-for="CategoryId" class="error"></span>
+                </div>
+            </div>
+        </div>
+      
+        <div class="row">
+          
+            <div class="form-group relative">
+                <input type="file" asp-for="Picture" class="form-control">
+                <label>انتخاب تصویر </label>
+                <div class="input-group round">
+                    <input type="text" asp-for="Picture" class="form-control file-input" placeholder="برای آپلود کلیک کنید">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-info">
+                            <i class="icon-picture"></i>
+                            آپلود عکس
+                        </button>
+                    </span>
+                </div><!-- /.input-group -->
+                <div class="help-block"></div>
+            </div><!-- /.form-group -->
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PictureAlte" class="control-label">Alt</label>
+                    <input type="text" class="form-control" asp-for="PictureAlte">
+                    <span asp-validation-for="PictureAlte" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PictureTitel" class="control-label">عنوان عکس</label>
+                    <input type="text" class="form-control" asp-for="PictureTitel">
+                    <span asp-validation-for="PictureTitel" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Heading" class="control-label">سرتیتر</label>
+                    <input type="text" class="form-control" asp-for="Heading">
+                    <span asp-validation-for="Heading" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Titel" class="control-label">عنوان</label>
+                    <input type="text" class="form-control" asp-for="Titel">
+                    <span asp-validation-for="Titel" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Text" class="control-label">متن</label>
+                    <input type="text" class="form-control" asp-for="Text">
+                    <span asp-validation-for="Text" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="BtnText" class="control-label">متن دکمه</label>
+                    <input type="text" class="form-control" asp-for="BtnText">
+                    <span asp-validation-for="BtnText" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Link" class="control-label">لینک</label>
+                    <input type="text" class="form-control" asp-for="Link">
+                    <span asp-validation-for="Link" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
+        <input type="hidden" asp-for="pictureName" value="@Model.pictureName" />
+        <input type="hidden" asp-for="pictureNamethum" value="@Model.pictureNamethum" />
+    </div>
+    <div class="col-md-8 col-lg-6 m-auto">
+
+        <button type="submit" class="btn btn-success btn-block mt-4 mb-2">
+            <i class="icon-cursor"></i>
+            ثبت
+        </button>
+        <button type="button" class="btn btn-danger btn-block float-end mb-3" data-bs-dismiss="modal">بازگشت</button>
+    </div>
+</form>

@@ -14,6 +14,7 @@ using SlideManagement.Infrastucture.Configuration;
 using TrucksManagement.Configuration;
 using _0_Framework.Infrastructure;
 using KamionLandQuery.Contracts.Menu;
+using KamionLandQuery.Contracts.SlideTrucks;
 using KamionLandQuery.Querys;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +31,7 @@ InventoryManagementBoostrapper.ConfigurInventory(builder.Services,contectionstri
 TrucksManagementBoostrapper.Configur(builder.Services,contectionstring);
 
 builder.Services.AddScoped<IMenuQuery, MenuQuery>();
-
+builder.Services.AddScoped<ISlideTrucksQueryModel, SlideTrucksQueryModel>();
 
 
 builder.Services.AddScoped<IFileUploader, FileUploader>();

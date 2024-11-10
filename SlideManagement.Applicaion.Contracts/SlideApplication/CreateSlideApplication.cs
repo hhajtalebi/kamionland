@@ -1,5 +1,8 @@
 ﻿using _0_Framework.Application;
 using Microsoft.AspNetCore.Http;
+using TrucksManagement.Application.contracts.TrkCategoryApplication;
+
+
 
 namespace SlideManagement.Applicaion.Contracts.SlideApplication
 {
@@ -16,5 +19,6 @@ namespace SlideManagement.Applicaion.Contracts.SlideApplication
         public  string Link { get; set; }
         public long? CategoryId { get;  set; }
         public long? CanonicalId { get; set; }
+        public List<TrkCategoryViewModel> ListCategoresp { get; set; }
     }
 }

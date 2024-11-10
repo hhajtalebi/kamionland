@@ -31,6 +31,8 @@
     <ProjectReference Include="..\InventoryManegment.Configuration\InventoryManegment.Configuration.csproj" />
     <ProjectReference Include="..\KamionLandQuery\KamionLandQuery.csproj" />
     <ProjectReference Include="..\SlideManagement.Infrastucture.Configuration\SlideManagement.Infrastucture.Configuration.csproj" />
+    <ProjectReference Include="..\TrucksManagement.Application.contracts\TrucksManagement.Application.contracts.csproj" />
+    <ProjectReference Include="..\TrucksManagement.Application\TrucksManagement.Application.csproj" />
     <ProjectReference Include="..\TrucksManagement.Configuration\TrucksManagement.Configuration.csproj" />
   </ItemGroup>
 

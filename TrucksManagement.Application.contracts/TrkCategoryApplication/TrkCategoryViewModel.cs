@@ -2,5 +2,5 @@
 
 public class TrkCategoryViewModel : EditTrkCategory
 {
-
+    public string? parentName { get; set; }
 }

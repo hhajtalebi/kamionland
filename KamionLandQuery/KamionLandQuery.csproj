@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SlideManagement.Infrastucture.EfCore\SlideManagement.Infrastucture.EfCore.csproj" />
     <ProjectReference Include="..\TrucksManagement.Application.contracts\TrucksManagement.Application.contracts.csproj" />
     <ProjectReference Include="..\TrucksManagement.Infrustructuer.EfCore\TrucksManagement.Infrustructuer.EfCore.csproj" />
   </ItemGroup>

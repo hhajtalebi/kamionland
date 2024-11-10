@@ -24,5 +24,6 @@ namespace TrucksManagement.Application.contracts.TrkCategoryApplication
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Slug { get; set; }
         public long? ParentId { get; set; }
+        public List<TrkCategoryViewModel>? ChildCategories { get; set; }
     }
 }
