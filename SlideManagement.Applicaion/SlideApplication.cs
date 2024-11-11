@@ -21,11 +21,11 @@ namespace SlideManagement.Applicaion
             var operation = new OperationResulte();
 
             var path = "slides";
-            var PictureName = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path,780,441);
+            var PictureName = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path,1400,440);
             var PictureNamefull = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path,480,400);
             var PictureNamethum = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path, 370,205);
 
-            var slide = new Slide(PictureName,PictureNamefull, PictureNamethum, command.PictureAlte, command.PictureTitel, command.Titel,
+            var slide = new Slide(PictureNamefull,PictureName, PictureNamethum, command.PictureAlte, command.PictureTitel, command.Titel,
                 command.BtnText, command.Heading, command.Text, command.Link,command.CategoryId,command.CanonicalId);
 
             _slideRepository.Create(slide);
@@ -56,13 +56,13 @@ namespace SlideManagement.Applicaion
             if (command.Picture != null)
             {
                 var path = "slides";
-                 PictureName = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path, 780, 441);
+                 PictureName = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path, 1400, 440);
                  PictureNameThum = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path, 370, 205);
                   PictureNamefull = _fileUploader.UploadNewSizeFromWightAndHeight(command.Picture, path, 480, 400);
 
             }
 
-            slide.Edit(PictureName,PictureNamefull, PictureNameThum, command.PictureAlte, command.PictureTitel, command.Titel,
+            slide.Edit(PictureNamefull, PictureName, PictureNameThum, command.PictureAlte, command.PictureTitel, command.Titel,
                 command.BtnText, command.Heading, command.Text, command.Link,command.CategoryId,command.CanonicalId);
 
             _slideRepository.SaveChanges();
