@@ -49,7 +49,7 @@
 
                     <div class="row">
                         <div class="col-md-2 col-12 m-b-20">
-                            <a class="btn btn-success btn-round " href="#showmodal=@Url.Page("./Index", "Create")">
+                            <a class="btn btn-success btn-round " asp-page="./Create">
                                 <i class="icon-plus"></i>
                                 افزودن
                                 <div class="paper-ripple"><div class="paper-ripple__background"></div><div class="paper-ripple__waves"></div></div>
@@ -68,7 +68,7 @@
                                     <th>نام </th>
                                     <th>رنگ</th>
                                     <th>مدل </th>
-                                    <th>سال</th>
+                                    <th>کیلومتر</th>
                                     <th> تاریخ ثبت</th>
                                    <th>عملیات</th>
                                 </tr>
@@ -80,7 +80,7 @@
                                     {
                                         <tr>
                                             <td>@cunter</td>
-                                            <td>@truck.CategoryId</td>
+                                            <td>@truck.category</td>
                                             <td>
                                                 <a href="#showmodal=@Url.Page("./Index", "FullPicture", new { id = truck.Id })">
                                                     <img src="~/Pictures/@truck.PictureName" style="width: 70px;" />
@@ -95,8 +95,7 @@
                                             
                                             <td>
 
-                                                <a class="btn btn-primary btn-round"
-                                                   href="#showmodal=@Url.Page("./Index", "Edit", new { id = truck.Id })">
+                                                <a class="btn btn-primary btn-round" asp-page="./Edit" asp-route-id="@truck.Id">
                                                     <i class="fa fa-edit"></i> ویرایش
                                                 </a>
                                                 <a class="btn btn-primary btn-round" asp-page="/shohada/collectionsh/Index" asp-route-id="@truck.Id">

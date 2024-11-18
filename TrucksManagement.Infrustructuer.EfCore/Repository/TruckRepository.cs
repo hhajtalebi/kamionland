@@ -44,7 +44,8 @@ namespace TrucksManagement.Infrustructuer.EfCore.Repository
                 Slug = x.Slug,
                 TruckModel = x.TruckModel,
                 Year = x.Year,
-                color = x.color
+                color = x.color,
+                category = _context.TruckCategories.FirstOrDefault(c=>c.Id==x.CategoryId).Name,
             }).ToList();
         }
 

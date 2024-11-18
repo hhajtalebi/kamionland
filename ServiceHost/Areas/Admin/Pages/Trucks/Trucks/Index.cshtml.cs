@@ -23,38 +23,8 @@ namespace ServiceHost.Areas.Admin.Pages.Trucks.Trucks
             GetTrucks=_trucksApplication.GetTrucks();
         }
 
-        public IActionResult OnGetCreate()
-        {
-            var command = new CreateTruck();
-            command.categoryList = _trkCategoryApplication.GetTrkCategorys();
-            return Partial("./Create", command);
-        }
-
-        public JsonResult OnPostCreate(CreateTruck command)
-        {
-            command.color = "fff";
-            command.Manufacturer = "ولوو";
-            var result = _trucksApplication.Create(command);
-            return new JsonResult(result);
-        }
-        public IActionResult OnGetEdit(long id)
-        {
-
-            var product = _trucksApplication.GetDetails(id);
-            product.categoryList = _trkCategoryApplication.GetTrkCategorys();
-            return Partial("Edit", product);
-        }
-
-        public JsonResult OnPostEdit(EditTruck command)
-        {
-
-            if (ModelState.IsValid)
-            {
-            }
-
-            var result = _trucksApplication.Edit(command);
-            return new JsonResult(result);
-        }
+       
+       
 
     }
 }
