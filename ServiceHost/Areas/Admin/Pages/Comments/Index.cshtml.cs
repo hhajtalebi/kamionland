@@ -19,7 +19,7 @@ namespace ServiceHost.Areas.Admin.Pages.Comments
         {
             _commentApplication = commentApplication;
         }
-        [NeedsPermission(CommentPermisssions.CommentManagemented)]
+        //[NeedsPermission(CommentPermisssions.CommentManagemented)]
 
         public void OnGet(CommentSearchModel searchModel)
         {

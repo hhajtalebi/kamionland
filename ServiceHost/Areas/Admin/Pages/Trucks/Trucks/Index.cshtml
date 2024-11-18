@@ -1,0 +1,122 @@
+﻿@page
+@using WebAMI.CommanLayer.PublicClass
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using _0_Framework.Application
+@model ServiceHost.Areas.Admin.Pages.Trucks.Trucks.IndexModel
+@{
+    int cunter = 1;
+}
+<div id="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="breadcrumb-box shadow">
+                <ul class="breadcrumb">
+                    <li><a href="/Admin/Dashboard">پیشخوان</a></li>
+                  
+                    <li class="active">  مدیریت کامیون ها</li>
+                </ul>
+                <div class="breadcrumb-left">
+                    @ConvertDateTime.ConvertMiladiToShamsi(DateTime.Now, "HH:mm  dd MMMM yyyy")
+
+                    <i class="icon-calendar"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="portlet box shadow">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h3 class="title">
+                            <i class="icon-frane"></i>
+                            لیست کامیون های ثبت شده
+                        </h3>
+                    </div>
+                    <div class="buttons-box">
+                        <a class="btn btn-sm btn-default btn-round btn-fullscreen" rel="tooltip" title="تمام صفحه" href="#">
+                            <i class="icon-size-fullscreen"></i>
+                        </a>
+                        <a class="btn btn-sm btn-default btn-round btn-collapse" rel="tooltip" title="کوچک کردن" href="#">
+                            <i class="icon-arrow-up"></i>
+                        </a>
+
+
+                    </div>
+
+                </div>
+                <div class="portlet-body">
+
+
+                    <div class="row">
+                        <div class="col-md-2 col-12 m-b-20">
+                            <a class="btn btn-success btn-round " href="#showmodal=@Url.Page("./Index", "Create")">
+                                <i class="icon-plus"></i>
+                                افزودن
+                                <div class="paper-ripple"><div class="paper-ripple__background"></div><div class="paper-ripple__waves"></div></div>
+                            </a>
+
+                        </div><!-- /.col-md-4 -->
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped" id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>دسته بندی</th>
+                                    <th>تصویر</th>
+                                    <th>نام </th>
+                                    <th>رنگ</th>
+                                    <th>مدل </th>
+                                    <th>سال</th>
+                                    <th> تاریخ ثبت</th>
+                                   <th>عملیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.GetTrucks != null)
+                                {
+                                    @foreach (var truck in Model.GetTrucks)
+                                    {
+                                        <tr>
+                                            <td>@cunter</td>
+                                            <td>@truck.CategoryId</td>
+                                            <td>
+                                                <a href="#showmodal=@Url.Page("./Index", "FullPicture", new { id = truck.Id })">
+                                                    <img src="~/Pictures/@truck.PictureName" style="width: 70px;" />
+
+                                                </a>
+                                            </td>
+                                            <td>@truck.Name</td>
+                                            <td>@truck.color</td>
+                                            <td>@truck.TruckModel</td>
+                                            <td>@truck.Year</td>
+                                            <td>@truck.CreationDateTime.ToFarsi()</td>
+                                            
+                                            <td>
+
+                                                <a class="btn btn-primary btn-round"
+                                                   href="#showmodal=@Url.Page("./Index", "Edit", new { id = truck.Id })">
+                                                    <i class="fa fa-edit"></i> ویرایش
+                                                </a>
+                                                <a class="btn btn-primary btn-round" asp-page="/shohada/collectionsh/Index" asp-route-id="@truck.Id">
+                                                    <i class="fa fa-edit"></i> محتوا
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-round">حذف</a>
+
+                                            </td>
+
+                                        </tr>
+                                        cunter++;
+                                    }
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.portlet-body -->
+            </div><!-- /.portlet -->
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+</div><!-- /#page-content -->

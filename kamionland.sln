@@ -133,7 +133,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlideManagement.Infrastuctu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{35BED047-741B-42A6-9D41-3479E0724242}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KamionLandQuery", "KamionLandQuery\KamionLandQuery.csproj", "{679F0193-E42A-4B52-9CEB-61A900E54A51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KamionLandQuery", "KamionLandQuery\KamionLandQuery.csproj", "{679F0193-E42A-4B52-9CEB-61A900E54A51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

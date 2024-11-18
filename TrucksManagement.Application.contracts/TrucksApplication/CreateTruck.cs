@@ -4,11 +4,13 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _0_Framework.Domain;
 using Microsoft.AspNetCore.Http;
+using TrucksManagement.Application.contracts.TrkCategoryApplication;
 
 namespace TrucksManagement.Application.contracts.TrucksApplication
 {
-    public class CreateTruck
+    public class CreateTruck:EntityBase
     {
         public string Name { get;  set; }
         public string ShortDescription { get;  set; }
@@ -26,5 +28,6 @@ namespace TrucksManagement.Application.contracts.TrucksApplication
         public string MetaDescription { get;  set; }
         public string Slug { get;  set; }
         public long CategoryId { get;  set; }
+        public List<TrkCategoryViewModel>? categoryList { get; set; }
     }
 }
