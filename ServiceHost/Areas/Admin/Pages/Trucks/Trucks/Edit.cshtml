@@ -46,7 +46,7 @@
                 </div>
                 <div class="portlet-body">
                     <div class="row col-12 mx-auto">
-                        <form method="post" enctype="multipart/form-data">
+                        <form role="form" method="POST" enctype="multipart/form-data">
                             <input type="hidden" asp-for="Command.Id"/>
                             <div class="row">
                                 <div class="col-md-4">
@@ -205,18 +205,20 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                  @*   <div class="form-group">
                                         <label  class="control-label">توضیحات</label>
 
                                         <textarea id="content" class="hide" asp-for="Command.Description"></textarea>
                                         <div id="editor"></div>
                                       
+                                    </div> *@
+                                    <div >
+                                        <textarea name="body" class="" id="body" asp-for="Command.Description"><p dir="rtl"><span style="font-family:Tahoma">هم اکنون نوشتن اولین نوشته خود را آغاز کنید...</span></p></textarea>
+                                        <div id="body"></div>
+                                        <button class="btn btn-info btn-round m-t-10" type="submit">ارسال به فرم</button>
                                     </div>
                                 </div>
-                                <div style="visibility: hidden; width: 0px; height: 0px;">
-                                    <textarea id="content-ltr" class="hide"><div>متن دلخواه به صورت کد اچتمل</div></textarea>
-                                    <div id="editor-ltr"></div>
-                                </div>
+                              
                             </div>
 
 
@@ -228,6 +230,11 @@
                                                   style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
                                         <span asp-validation-for="Command.MetaDescription" class="error"></span>
                                     </div>
+                                    <div class="hidden" style="width: 0; height: 0;">
+                                        <textarea name="content" class="hide" id="content-ltr"><p><span style="font-family:Tahoma">Write your first post now...</span></p></textarea>
+                                        <div id="editor-ltr"></div>
+                                    </div>
+                                   
                                 </div>
 
                             </div>
@@ -275,5 +282,27 @@
             };
             reader.readAsDataURL(event.target.files[0]);
         };
+    </script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#body'),
+                {
+                    ckfinder: {
+                        // Upload the images to the server using the CKFinder QuickUpload command.
+                        uploadUrl: '/UploadImage'
+                    },
+                    htmlSupport: {
+                        allow: [
+                            {
+                                name: /.*/,
+                                attributes: true,
+                                classes: true,
+                                styles: true
+                            }
+                        ]
+                    }
+                })
+            .catch(error => { console.error(error); });
     </script>
 }

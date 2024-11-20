@@ -6,11 +6,7 @@ function createPersianEditor(config) {
     editor = CKEDITOR.appendTo('editor', config);
     editor.setData($("#content").val());
 }
-function createEnglishEditor(config) {
-    CKEDITOR.config.skin = skin;
-    editor = CKEDITOR.appendTo('editor-ltr', config);
-    editor.setData($("#content-ltr").val());
-}
+
 function createInlineEditor(config) {
     CKEDITOR.config.skin = skin;
     CKEDITOR.disableAutoInline = true;
@@ -19,7 +15,7 @@ function createInlineEditor(config) {
 
 var config = {};
 
-config.language = 'en';
+config.language = 'fa';
 createEnglishEditor(config);
 
 config.language = 'fa';

@@ -24,10 +24,12 @@ namespace ServiceHost.Areas.Admin.Pages.Trucks.Trucks
             ListCategory = _truckcategoryapplication.GetTrkCategorys();
         }
 
-        public IActionResult OnPost(EditTruck command)
+        public IActionResult OnPost(EditTruck command , string body)
         {
+            command.Description=body;
             _truckapplication.Edit(command);
             return RedirectToPage("./Index");
         }
     }
+      
 }
