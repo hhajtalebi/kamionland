@@ -32,10 +32,15 @@ namespace BlogManagement.Application
                 return operationResulte.Failed(ApplicationMeasages.DuplicatedRecord);
 
             var slug = comman.Slug.Slugify();
-            var pictureName = _fileUploader.Upload(comman.Picture, $"{CategorySlug}/{slug}");
+            var path = $"Blog/Articel";
+            var pictureName = _fileUploader.UploadNewSize(comman.Picture, path, 860);
+            var pictureNamethum = _fileUploader.UploadNewSize(comman.Picture, path, 200);
+
+           
+
             var publishDate = comman.PublishDate.ToGeorgianDateTime();
 
-            var articel = new Articel(comman.Title, comman.ShortDescription, comman.Description, pictureName,
+            var articel = new Articel(comman.Title, comman.ShortDescription, comman.Description, pictureName,pictureNamethum,
                 comman.PictureAlte
                 , comman.PictureTitle, slug, comman.Keywords, comman.MetaDescription, comman.CanonicalAddress,
                 publishDate, comman.ArticelCategoryId);
@@ -53,14 +58,20 @@ namespace BlogManagement.Application
             var operationResulte = new OperationResulte();
             if (articel == null)
                 return operationResulte.Failed(ApplicationMeasages.RecordNotFound);
-            if (_articelRepository.Exists(x => x.Title == comman.Title && x.Id == comman.Id))
+            if (_articelRepository.Exists(x => x.Title == comman.Title && x.Id != comman.Id))
                 return operationResulte.Failed(ApplicationMeasages.DuplicatedRecord);
             var slug = comman.Slug.Slugify();
-            var pictureName = _fileUploader.Upload(comman.Picture, $"{CategorySlug}/{slug}");
+
+
+            var path = $"Blog/Articel";
+
+            var pictureName = _fileUploader.UploadNewSize(comman.Picture, path, 860);
+            var pictureNamethum = _fileUploader.UploadNewSize(comman.Picture, path, 200);
+
             var publishDate = comman.PublishDate.ToGeorgianDateTime();
 
 
-            articel.Edit(comman.Title, comman.ShortDescription, comman.Description, pictureName,
+            articel.Edit(comman.Title, comman.ShortDescription, comman.Description, pictureName,pictureNamethum,
                 comman.PictureAlte
                 , comman.PictureTitle, slug, comman.Keywords, comman.MetaDescription, comman.CanonicalAddress,
                 publishDate, comman.ArticelCategoryId);

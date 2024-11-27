@@ -50,7 +50,7 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 articelCategory = x.ArticelCategory.Name,
                 articelCategoryId=x.ArticelCategoryId,
                 Picture = x.Picture,
-                
+                Picturethum = x.Picturethum,
 
             });
             if (!string.IsNullOrWhiteSpace(searches.Title))

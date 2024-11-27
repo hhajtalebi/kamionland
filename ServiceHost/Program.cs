@@ -16,6 +16,7 @@ using _0_Framework.Infrastructure;
 using KamionLandQuery.Contracts.Menu;
 using KamionLandQuery.Contracts.SlideTrucks;
 using KamionLandQuery.Querys;
+using KamionLandQuery.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
@@ -29,9 +30,8 @@ AccountManagementBootstrapper.Configure(builder.Services, contectionstring);
 DiscountManagementBoostrapper.ConfigurDiscount(builder.Services,contectionstring);
 InventoryManagementBoostrapper.ConfigurInventory(builder.Services,contectionstring);
 TrucksManagementBoostrapper.Configur(builder.Services,contectionstring);
+KamionlandQueryManagementBoostrapper.Configur(builder.Services,contectionstring);
 
-builder.Services.AddScoped<IMenuQuery, MenuQuery>();
-builder.Services.AddScoped<ISlideTrucksQueryModel, SlideTrucksQueryModel>();
 
 
 builder.Services.AddScoped<IFileUploader, FileUploader>();

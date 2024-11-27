@@ -14,6 +14,8 @@ namespace BlogManagement.Domain.ArticelAgg
         public string ShortDescription { get; private set; }
         public string Description { get; private set; }
         public string Picture { get; private set; }
+        public string Picturethum { get; private set; }
+
         public string PictureAlte { get; private set; }
         public string PictureTitle { get; private set; }
         public string Slug { get; private set; }
@@ -24,7 +26,7 @@ namespace BlogManagement.Domain.ArticelAgg
         public long ArticelCategoryId { get; private set; }
         public ArticelCategory ArticelCategory { get; private set; }
 
-        public Articel(string title, string shortDescription, string description, string picture,
+        public Articel(string title, string shortDescription, string description, string picture,string picturethum,
             string pictureAlte, string pictureTitle, string slug, string keywords, string metaDescription,
             string? canonicalAddress, DateTime publishDate, long articelCategoryId)
         {
@@ -32,6 +34,7 @@ namespace BlogManagement.Domain.ArticelAgg
             ShortDescription = shortDescription;
             Description = description;
             Picture = picture;
+            Picturethum = picturethum;
             PictureAlte = pictureAlte;
             PictureTitle = pictureTitle;
             Slug = slug;
@@ -42,7 +45,7 @@ namespace BlogManagement.Domain.ArticelAgg
             ArticelCategoryId = articelCategoryId;
            
         }
-        public void Edit(string title, string shortDescription, string description, string picture, string pictureAlte,
+        public void Edit(string title, string shortDescription, string description, string picture, string picturethum, string pictureAlte,
             string pictureTitle, string slug, string keywords, string metaDescription, string? canonicalAddress, 
             DateTime publishDate, long articelCategoryId)
         {
@@ -51,6 +54,8 @@ namespace BlogManagement.Domain.ArticelAgg
             Description = description;
             if (!string.IsNullOrWhiteSpace(picture))
                 Picture = picture;
+            if (!string.IsNullOrWhiteSpace(picturethum))
+                Picturethum = picturethum;
             PictureAlte = pictureAlte;
             PictureTitle = pictureTitle;
             Slug = slug;

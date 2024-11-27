@@ -11,4 +11,6 @@ public class ArticelViewModel
     public string PublishDate { get; set; }
     public string articelCategory { get; set; }
     public string? Picture { get; set; }
+    public string Picturethum { get; set; }
+
 }
