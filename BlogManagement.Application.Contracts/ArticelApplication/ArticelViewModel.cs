@@ -12,5 +12,5 @@ public class ArticelViewModel
     public string articelCategory { get; set; }
     public string? Picture { get; set; }
     public string Picturethum { get; set; }
-
+    public string slug { get; set; }
 }

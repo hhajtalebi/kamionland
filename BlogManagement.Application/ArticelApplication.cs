@@ -91,6 +91,9 @@ namespace BlogManagement.Application
           return _articelRepository.Search(searches);
         }
 
-      
+        public List<ArticelViewModel>? GetArticels()
+        {
+            return _articelRepository.GetArticels();
+        }
     }
 }

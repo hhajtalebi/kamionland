@@ -59,14 +59,23 @@ namespace TrucksManagement.Application
            return resulte.Succedded();
         }
 
-        public EditTrkCategory GetDetailes(long id)
+        public EditTrkCategory? GetDetailes(long id)
         {
             return _truckCategoryRepository.GetDetailes(id);
+        }
+        public EditTrkCategory? GetDetailes(string slug)
+        {
+            return _truckCategoryRepository.GetDetailes(slug);
         }
 
         public List<TrkCategoryViewModel> GetTrkCategorys()
         {
             return _truckCategoryRepository.GetTrkCategorys();
+        }
+
+        public List<TrkCategoryViewModel>? GetTrkCategorys(long id)
+        {
+            return _truckCategoryRepository.GetTrkCategorys(id);
         }
     }
 }

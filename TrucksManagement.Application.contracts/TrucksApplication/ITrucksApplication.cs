@@ -8,6 +8,7 @@ public interface ITrucksApplication
     OperationResulte Edit(EditTruck  command);
     EditTruck GetDetails(long  id);
     public List<TruckViewModel> GetTrucks();
+    public List<TruckViewModel>? GetTrucks(long categoryId);
 
 
 }

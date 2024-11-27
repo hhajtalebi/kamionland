@@ -20,7 +20,7 @@ namespace TrucksManagement.Infrustructuer.EfCore.Repository
             _context = context;
         }
 
-        public EditTrkCategory GetDetailes(long id)
+        public EditTrkCategory? GetDetailes(long id)
         {
             return _context.TruckCategories.Select(x => new EditTrkCategory()
             {
@@ -36,10 +36,41 @@ namespace TrucksManagement.Infrustructuer.EfCore.Repository
                 keyword =x.keyword
             }).FirstOrDefault(x => x.Id == id);
         }
-
+        public EditTrkCategory? GetDetailes(string slug)
+        {
+            return _context.TruckCategories.Select(x => new EditTrkCategory()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                MetaDescription = x.MetaDescription,
+                ParentId = x.ParentId,
+                PictureName = x.Picture,
+                PictureAlt = x.PictureAlt,
+                PictureTitel = x.PictureTitel,
+                Slug = x.Slug,
+                keyword = x.keyword
+            }).FirstOrDefault(x => x.Slug == slug);
+        }
         public List<TrkCategoryViewModel> GetTrkCategorys()
         {
             return _context.TruckCategories.Select(x => new TrkCategoryViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                MetaDescription = x.MetaDescription,
+                ParentId = x.ParentId,
+                PictureName = x.Picture,
+                PictureAlt = x.PictureAlt,
+                PictureTitel = x.PictureTitel,
+                Slug = x.Slug,
+                keyword = x.keyword
+            }).OrderByDescending(x => x.Id).ToList();
+        }
+        public List<TrkCategoryViewModel>? GetTrkCategorys(long id)
+        {
+            return _context.TruckCategories.Where(x=>x.Id==id).Select(x => new TrkCategoryViewModel()
             {
                 Id = x.Id,
                 Name = x.Name,

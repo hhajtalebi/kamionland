@@ -1,0 +1,412 @@
+﻿@page "{id}"
+
+@using _0_Framework.Application
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ServiceHost.Pages.Blog.DetaileArticelModel
+@{
+    ViewData["Title"] = "مقالات ";
+    Layout = "_Layout";
+
+}
+<nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index-1.html">خانه</a></li>
+            <li class="breadcrumb-item"><a href="#">مقالات</a></li>
+            <li class="breadcrumb-item active" aria-current="page">جزئیات مقاله</li>
+        </ol>
+    </div><!-- End .container -->
+</nav><!-- End .breadcrumb-nav -->
+
+<div class="page-content">
+    <div class="container">
+        <div >
+            <div>
+                <img src="~/Pictures/@Model.articel.Picture" style="width:400px" alt="@Model.articel.PictureAlte" title="@Model.articel.PictureTitle">
+
+            </div><!-- End .owl-carousel -->
+        </div><!-- End .entry-media -->
+        <div class="row">
+            <div class="col-lg-9">
+                <article class="entry single-entry">
+                    <div class="entry-body">
+                        <div class="entry-meta">
+                            <span class="entry-author">
+                                نویسنده : <a href="#">مدیر سایت</a>
+                            </span>
+                            <span class="meta-separator">|</span>
+                            <a href="#">@Model.articel.PublishDate.ToFarsi()  </a>
+                            <span class="meta-separator">|</span>
+                            <a href="#">@Model.Comment.Count() - دیدگاه</a>
+                        </div><!-- End .entry-meta -->
+
+                        <h2 class="entry-title entry-title-big">
+                            @Model.articel.Title
+                        </h2><!-- End .entry-title -->
+
+                        <div class="entry-cats">
+                            <a href="#">@Model.articel.ArticelCategoryName</a>،
+
+                        </div><!-- End .entry-cats -->
+
+                        <div class="entry-content editor-content">
+                            @Html.Raw(@Model.articel.Description)
+
+                        </div><!-- End .entry-content -->
+
+                        <div class="entry-footer row no-gutters flex-column flex-md-row">
+                            <div class="col-md">
+                                <div class="entry-tags">
+                                    <span>برچسب : </span>
+                                    @if (Model.articel.Keywords != null)
+                                    {
+                                        @foreach (var tag in Model.articel.Keywords.Split(",", StringSplitOptions.RemoveEmptyEntries))
+                                        {
+                                            <a href="#">@tag</a>
+                                        }
+                                    }
+
+                                </div><!-- End .entry-tags -->
+                            </div><!-- End .col -->
+
+                            <div class="col-md-auto mt-2 mt-md-0">
+                                <div class="social-icons social-icons-color">
+                                    <span class="social-label">اشتراک گذاری این پست : </span>
+                                    <a href="#" class="social-icon social-facebook" title="فیسبوک"
+                                       target="_blank"><i class="icon-facebook-f"></i></a>
+                                    <a href="#" class="social-icon social-twitter" title="توییتر"
+                                       target="_blank"><i class="icon-twitter"></i></a>
+                                    <a href="#" class="social-icon social-pinterest" title="پینترست"
+                                       target="_blank"><i class="icon-pinterest"></i></a>
+                                    <a href="#" class="social-icon social-linkedin" title="لینکدین"
+                                       target="_blank"><i class="icon-linkedin"></i></a>
+                                </div><!-- End .soial-icons -->
+                            </div><!-- End .col-auto -->
+                        </div><!-- End .entry-footer row no-gutters -->
+                    </div><!-- End .entry-body -->
+
+
+                </article><!-- End .entry -->
+
+                <div class="related-posts">
+                    <h3 class="title">پست های مرتبط</h3><!-- End .title -->
+
+                    <div class="owl-carousel owl-simple" data-toggle="owl" data-owl-options='{
+                                        "nav": false,
+                                        "dots": true,
+                                        "margin": 20,
+                                        "loop": false,
+                                        "rtl": true,
+                            "responsive": {
+                                            "0": {
+                                                "items":1
+                                            },
+                                            "480": {
+                                                "items":2
+                                            },
+                                            "768": {
+                                                "items":3
+                                            }
+                                        }
+                                    }'>
+                        @foreach (var articel in Model.ListArticel)
+                        {
+                            <article class="entry entry-grid">
+                                <figure class="entry-media">
+                                    <a href="/Blog/DetaileArticel/@articel.Slug">
+                                        <img src="~/Pictures/@articel.Picture" alt=" @articel.PictureAlte" title="@articel.PictureTitle">
+                                    </a>
+                                </figure><!-- End .entry-media -->
+
+                                <div class="entry-body">
+                                    <div class="entry-meta justify-content-start">
+                                        <a href="/Blog/DetaileArticel/@articel.Slug">@articel.PublishDate.ToFarsi()  </a>
+                                        <span class="meta-separator">|</span>
+                                        <a href="#">1 دیدگاه</a>
+                                    </div><!-- End .entry-meta -->
+
+                                    <h2 class="entry-title">
+                                        <a href="/Blog/DetaileArticel/@articel.Slug">@articel.Title</a>
+                                    </h2><!-- End .entry-title -->
+
+                                    <div class="entry-cats">
+                                        <a href="/Blog/DetaileArticel/@articel.Slug">@articel.ArticelCategoryName </a>،
+
+                                    </div><!-- End .entry-cats -->
+                                </div><!-- End .entry-body -->
+                            </article>
+
+                            <!-- End .entry -->
+                        }
+
+
+                    </div><!-- End .owl-carousel -->
+                </div><!-- End .related-posts -->
+
+                <div class="comments">
+                    <h3 class="title"> دیدگاه(@Model.Comment.Count())</h3><!-- End .title -->
+
+
+
+
+                    <div class="reviews">
+
+                        <div class="touch-container row justify-content-center">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="text-center">
+                                    <h2 class="title mb-1 text-center">ارسال نظر برای مقاله / خبر ما</h2><!-- End .title mb-2 -->
+                                    <p class="lead text-primary text-center mb-5">
+                                        نظر شما در مورد مقاله / خبر که ما ارائه می دهیم مهم است و باعث بهتر شد کیفیت کار می شود
+                                    </p><!-- End .lead text-primary -->
+                                   
+                                    <form method="post" class="contact-form mb-2" id="PostComment">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label for="cname" class="sr-only">نام</label>
+                                                <input type="text" class="form-control" name="Name" id="Name" placeholder="نام خود را وارد کنید *" required="">
+                                            </div><!-- End .col-sm-4 -->
+
+                                            <div class="col-sm-6">
+                                                <label for="cphone" class="sr-only">شماره موبایل</label>
+                                                <input type="tel" class="form-control" name="PhoneNumber" id="PhoneNumber" placeholder="شماره موبایل خود را وارد کنید">
+                                            </div><!-- End .col-sm-4 -->
+                                        </div><!-- End .row -->
+
+
+                                        <label for="cmessage" class="sr-only">پیام</label>
+                                        <textarea class="form-control" cols="30" rows="4" name="Message" id="Message" required="" placeholder="متن پیام شما *"></textarea>
+
+                                        <input class="hidden" type="hidden" name="OwnerRecordId" value="@Model.articel.Id" />
+                                        <input class="hidden" type="hidden" name="slug" value="@Model.articel.Slug" />
+                                        <input class="hidden" type="hidden" name="ParentId" id="comment_ParentId" value="@Model.articel.Slug" />
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-outline-primary-2 btn-minwidth-sm">
+                                                <span>تایید و ارسال</span>
+                                                <i class="icon-long-arrow-left"></i>
+                                            </button>
+                                        </div><!-- End .text-center -->
+                                    </form><!-- End .contact-form -->
+                                </div><!-- End .col-md-9 col-lg-7 -->
+                            </div><!-- End .row -->
+                        </div>
+
+
+
+
+                        @if (Model.Comment.Count <= 0)
+                        {
+                            <div class="review">
+
+                                <div class="col-12">
+
+                                    <div class="review-content">
+                                        <p class="alert alert-primary">
+                                            هنوز نظری برای این پست ثبت نشده شما می توانید اولین نفری باسید که نظر خودتان را ثبت می کنید .
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <div class="comments">
+                              
+                                @if (@Model.Comment.Any(x => x.ParentId == 0))
+                                {
+
+                                    <ul>
+                                        @foreach (var commnet1 in Model.Comment.Where(x => x.ParentId == 0))
+                                        {
+                                            <li>
+                                                <div class="comment">
+                                                   @*  <figure class="comment-media">
+                                                        <a href="#">
+                                                            <img src="/ProductPictures/profilePhotos/@commnet1." alt="User name">
+                                                        </a>
+                                                    </figure>
+ *@
+                                                    <div class="comment-body">
+                                                        <a href="#PostComment" class="comment-reply" onclick='$("#comment_ParentId").val(@commnet1.Id)'>پاسخ</a>
+                                                        <div class="comment-user">
+                                                            <h4><a href="#">@commnet1.Name</a></h4>
+                                                            <span class="comment-date">@commnet1.CreateDate</span>
+                                                        </div> <!-- End .comment-user -->
+
+                                                        <div class="comment-content">
+                                                            <p>
+                                                                @commnet1.Message
+                                                            </p>
+                                                        </div><!-- End .comment-content -->
+                                                    </div><!-- End .comment-body -->
+                                                </div><!-- End .comment -->
+                                                @if (@Model.Comment.Any(x => x.ParentId == commnet1.Id))
+                                                {
+
+                                                    <ul>
+                                                        @foreach (var commentreplay in @Model.Comment.Where(x => x.ParentId == commnet1.Id))
+                                                        {
+                                                            <li>
+                                                                <div class="comment">
+                                                                    <figure class="comment-media">
+                                                                        <a href="#">
+                                                                            <img src="assets/images/blog/comments/2.jpg" alt="User name">
+                                                                        </a>
+                                                                    </figure>
+
+                                                                    <div class="comment-body">
+                                                                        <a href="#PostComment" class="comment-reply" onclick='$("#comment_ParentId").val(@commentreplay.Id)'>پاسخ</a>
+                                                                        <div class="comment-user">
+                                                                            <h4><a href="#">@commentreplay.Name</a></h4>
+                                                                            <span class="comment-date">
+                                                                                @commentreplay.CreateDate
+                                                                            </span>
+                                                                        </div><!-- End .comment-user -->
+
+                                                                        <div class="comment-content">
+                                                                            <p>@commentreplay.Message</p>
+                                                                        </div><!-- End .comment-content -->
+                                                                    </div><!-- End .comment-body -->
+                                                                </div><!-- End .comment -->
+                                                                @if (@Model.Comment.Any(x => x.ParentId == commentreplay.Id))
+                                                                {
+                                                                    <ul>
+                                                                        @foreach (var reaplaycomment in @Model.Comment.Where(x => x.ParentId == commentreplay.Id))
+                                                                        {
+                                                                            <li>
+                                                                                <div class="comment">
+                                                                                    <figure class="comment-media">
+                                                                                        <a href="#">
+                                                                                            <img src="assets/images/blog/comments/2.jpg" alt="User name">
+                                                                                        </a>
+                                                                                    </figure>
+
+                                                                                    <div class="comment-body">
+@*                                                                                        <a href="#PostComment" class="comment-reply" onclick='$("#comment_ParentId").val(@reaplaycomment.Id)'>پاسخ</a>
+*@                                                                                        <div class="comment-user">
+                                                                                            <h4><a href="#">@reaplaycomment.Name</a></h4>
+                                                                                            <span class="comment-date">
+                                                                                                @reaplaycomment.CreateDate
+                                                                                            </span>
+                                                                                        </div><!-- End .comment-user -->
+
+                                                                                        <div class="comment-content">
+                                                                                            <p>@reaplaycomment.Message</p>
+                                                                                        </div><!-- End .comment-content -->
+                                                                                    </div><!-- End .comment-body -->
+                                                                                </div><!-- End .comment -->
+                                                                            </li>
+                                                                        }
+                                                                    </ul>
+
+                                                                }
+                                                              
+                                                            </li>
+
+                                                        }
+                                                    </ul>
+
+                                                }
+
+                                            </li>
+                                        }
+                                    </ul>
+
+
+                                }
+
+                            </div>
+
+
+
+
+
+
+
+                        }
+
+                    </div>
+
+
+
+                </div><!-- End .comments -->
+
+            </div>
+
+            <aside class="col-lg-3">
+                <div class="sidebar">
+                    <div class="widget widget-search">
+                        <h3 class="widget-title">جستجو</h3><!-- End .widget-title -->
+
+                        <form action="#">
+                            <label for="ws" class="sr-only">جستجوی اخبار</label>
+                            <input type="search" class="form-control" name="ws" id="ws"
+                                   placeholder="جستجوی مقاله مورد نظر" required>
+                            <button type="submit" class="btn">
+                                <i class="icon-search"></i><span class="sr-only">جستجو</span>
+                            </button>
+                        </form>
+                    </div><!-- End .widget -->
+
+                    <div class="widget widget-cats">
+                        <h3 class="widget-title">دسته بندی ها</h3><!-- End .widget-title -->
+
+                        <ul>
+                            @foreach (var category in Model.ArticelCategorys)
+                            {
+                                <li><a href="#"> @category.Name<span>@category.ArticelCategoryCount</span></a></li>
+
+                            }
+
+                        </ul>
+                    </div><!-- End .widget -->
+
+                    <div class="widget">
+                        <h3 class="widget-title">محبوب ترین مقالات</h3><!-- End .widget-title -->
+
+                        <ul class="posts-list">
+                            @foreach (var articel in Model.ListArticel)
+                            {
+                                <li>
+                                    <figure>
+                                        <a href="/Blog/DetaileArticel/@articel.Slug">
+                                            <img src="~/Pictures/@articel.Picture" alt="@articel.PictureAlte" title="@articel.PictureTitle">
+                                        </a>
+                                    </figure>
+
+                                    <div>
+                                        <span>@articel.PublishDate.ToFarsi()  </span>
+                                        <h4><a href="/Blog/DetaileArticel/@articel.Slug">  @articel.Title</a></h4>
+                                    </div>
+                                </li>
+
+                            }
+
+                        </ul><!-- End .posts-list -->
+                    </div><!-- End .widget -->
+
+                 
+
+                    <div class="widget">
+                        <h3 class="widget-title">برچسب ها</h3><!-- End .widget-title -->
+
+                        <div class="tagcloud">
+                            @if (Model.articel.Keywords != null)
+                            {
+                                @foreach (var tag in Model.articel.Keywords.Split(",", StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <a href="#">@tag</a>
+                                }
+                            }
+
+                        </div><!-- End .tagcloud -->
+                    </div><!-- End .widget -->
+
+                  
+                </div><!-- End .sidebar -->
+            </aside><!-- End .col-lg-3 -->
+        </div><!-- End .row -->
+    </div><!-- End .container -->
+</div><!-- End .page-content -->

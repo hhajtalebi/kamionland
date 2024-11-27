@@ -30,7 +30,7 @@ namespace TrucksManagement.Configuration
             services.AddScoped<ITruckRepository, TruckRepository>();
 
             services.AddDbContext<TrcksContext>(x => x.UseSqlServer(contectionString));
-
+           
         }
     }
 }

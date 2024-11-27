@@ -13,6 +13,7 @@ namespace TrucksManagement.Domain.TruckAgg
         public Truck? GetProductWithCategory(long Id);
         public List<TruckViewModel> GetTrucks();
         EditTruck GetDetails(long id);
+        public List<TruckViewModel>? GetTrucks(long categoryId);
 
     }
 }

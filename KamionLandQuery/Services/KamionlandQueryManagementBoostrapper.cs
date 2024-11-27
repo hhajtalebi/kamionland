@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using KamionLandQuery.Contracts.Blogs;
 using KamionLandQuery.Contracts.Blogs.Blog;
 using KamionLandQuery.Contracts.Blogs.Blog.ArticelCategory;
+using KamionLandQuery.Contracts.comment;
 using KamionLandQuery.Querys;
 using KamionLandQuery.Contracts.Menu;
 using KamionLandQuery.Contracts.SlideTrucks;
@@ -23,6 +24,7 @@ namespace KamionLandQuery.Services
 
             services.AddScoped<IMenuQuery, MenuQuery>();
             services.AddScoped<ISlideTrucksQueryModel, SlideTrucksQueryModel>();
+            services.AddScoped<ICommentQuery, CommentQuery>();
 
 
         }

@@ -81,7 +81,7 @@
                             {
 
                                 <li class="megamenu-list">
-                                    <a href="#" class="sf-with-ul">@menu.Name</a>
+                                    <a asp-page="/superpage/Index" asp-route-Slug="@menu.Slug" class="sf-with-ul">@menu.Name</a>
                                     @if (Model.siteCategorys.Any(x => x.ParentId == menu.Id))
                                     {
                                         <div class="megamenu megamenu-md">
@@ -93,7 +93,7 @@
                                                                 @foreach (var subsitecategory in @Model.siteCategorys.Where(x => x.ParentId == menu.Id).ToList())
                                                                 {
                                                                     <div class="menu-title">
-                                                                        <a href="category-list.html">@subsitecategory.Name</a>
+                                                                        <a asp-page="/superpage/Index" asp-route-Slug="@subsitecategory.Slug">@subsitecategory.Name</a>
                                                                     </div>
                                                                     @if (Model.siteCategorys.Any(x => x.ParentId == subsitecategory.Id))
                                                                     {

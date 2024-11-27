@@ -14,7 +14,9 @@ namespace blogManagement.Application.Contracts.ArticelApplication
         OperationResulte Edit(EditArticel comman);
         EditArticel? GetDetails(long  id);
         List<ArticelViewModel> Search(ArticelSearchModel searches);
-      
+        public List<ArticelViewModel>? GetArticels();
+
+
 
     }
 }

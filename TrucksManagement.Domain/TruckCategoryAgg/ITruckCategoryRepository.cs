@@ -10,7 +10,9 @@ namespace TrucksManagement.Domain.TruckCategoryAgg
 {
     public interface ITruckCategoryRepository:IRepository<long,TruckCategory>
     {
-        EditTrkCategory GetDetailes(long id);
+        EditTrkCategory? GetDetailes(long id);
+        EditTrkCategory? GetDetailes(string slug);
         public List<TrkCategoryViewModel> GetTrkCategorys();
+        public List<TrkCategoryViewModel>? GetTrkCategorys(long id);
     }
 }

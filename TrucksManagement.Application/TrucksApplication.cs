@@ -66,5 +66,10 @@ namespace TrucksManagement.Application
         {
             return _truckRepository.GetTrucks();
         }
+
+        public List<TruckViewModel>? GetTrucks(long categoryId)
+        {
+            return _truckRepository.GetTrucks(categoryId);
+        }
     }
 }
