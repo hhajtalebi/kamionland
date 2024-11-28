@@ -36,4 +36,12 @@
     <ProjectReference Include="..\TrucksManagement.Configuration\TrucksManagement.Configuration.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\CategoryBase\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Components\CategoryBase\Default.cshtml" />
+  </ItemGroup>
+
 </Project>

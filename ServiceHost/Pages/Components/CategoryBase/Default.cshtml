@@ -1,0 +1,52 @@
+﻿@model System.Collections.Generic.List<TrucksManagement.Application.contracts.TrkCategoryApplication.TrkCategoryViewModel>?
+
+    
+@if (Model != null)
+{
+
+    <div class="container">
+        <div class="owl-carousel owl-simple rows cols-1 cols-sm-2 cols-lg-3" data-toggle="owl"
+             data-owl-options='{
+                                "nav": false,
+                                "dots": true,
+                                "margin": 10,
+                                "loop": false,
+                                "rtl": true,
+                                "responsive": {
+                                    "0": {
+                                        "items":1
+                                    },
+                                    "576": {
+                                        "items":2
+                                    },
+                                    "992": {
+                                        "items":3
+                                    }
+                                }
+                            }'>
+            @foreach (var item in Model)
+            {
+                <div class="banner mb-0">
+                    <a href="#">
+                        <img src="~/Pictures/@item.PictureName" width="460"
+                             height="210">
+                    </a>
+                    <div class="banner-content p-3">
+                        <h5 class="banner-subtitle font-weight-normal text-light mb-1">@item.Name</h5>
+                        <h3 class="banner-title font-weight-bold">
+                            @item.Description<br>
+                        </h3>
+                        <a href="#" class="banner-link text-decoration-none">
+                            ادامه مطلب<i class="icon-angle-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+            }
+           
+        </div>
+    </div>
+
+
+
+}
