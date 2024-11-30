@@ -8,6 +8,7 @@ namespace KamionLandQuery.Querys
     public class MenuQuery : IMenuQuery
     {
         private readonly TrcksContext _Context;
+        
 
         public MenuQuery(TrcksContext Context)
         {
@@ -75,6 +76,37 @@ namespace KamionLandQuery.Querys
                             MetaDescription = x.MetaDescription,
                             ParentId = x.ParentId,
                         });
+                    Listcategory.AddRange(category);
+                }
+
+            }
+
+            return Listcategory;
+        }
+        public List<TrkCategoryViewModel>? CategoryBaseParentNextOne()
+        {
+            List<TrkCategoryViewModel>? Listcategory = new List<TrkCategoryViewModel>();
+            
+            var categoreis = CategoryBaseParent();
+            if (categoreis != null)
+            {
+                foreach (var cta in categoreis)
+                {
+                    var category = _Context.TruckCategories.Where(x => x.ParentId == cta.Id).Select(x =>
+                        new TrkCategoryViewModel()
+                        {
+                            Id = x.Id,
+                            Name = x.Name,
+                            Description = x.Description,
+                            PictureAlt = x.PictureAlt,
+                            PictureTitel = x.PictureTitel,
+                            Slug = x.Slug,
+                            PictureName = x.Picture,
+                            MetaDescription = x.MetaDescription,
+                            ParentId = x.ParentId,
+                            ProductCount = _Context.Trucks.Count(p => p.CategoryId==x.Id),
+                        });
+
                     Listcategory.AddRange(category);
                 }
 

@@ -41,7 +41,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Components\CategoryBaseParent\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Components\CategoryBase\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Components\DiscountCoustomer\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\CategoryBaseParent\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\DiscountCoustomer\Default.cshtml" />
   </ItemGroup>
 
 </Project>

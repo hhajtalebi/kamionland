@@ -1,0 +1,62 @@
+﻿@model System.Collections.Generic.List<KamionLandQuery.Contracts.DiscountCoustomer.CoustomerDiscountQueryViewModel>?
+
+@if (Model != null)
+{
+        @foreach (var item in Model)
+        {
+        <div class="product mb-0 rounded-0 w-100">
+            <figure class="product-media bg-white ">
+                <a href="#">
+                    <img src="~/Pictures/@item.PictureName" width="192"
+                         height="192">
+                </a>
+                <a href="#" class="btn-product-zoom btn-quickview" data-product-id="260"
+                   title="مقایسه سریع"><span></span></a>
+                <div class="product-label label-sale">تخفیف : @item.DiscountRate%</div>
+
+            </figure>
+            <div class="product-body position-static bg-transparent">
+                <div class="product-cat overflow-hidden my-2 mt-0 font-weight-normal">
+                    <a href="#">سبزیجات</a>
+                </div>
+                <a href="#">
+                    <h3 class="product-title overflow-hidden letter-spacing-normal">@item.Product</h3>
+                </a>
+                <div class="product-price font-weight-bold align-items-center d-flex mb-0">
+                    <h4 class="new-price font-weight-bold mb-0">12,800 تومان</h4>
+                    <h4 class="old-price font-weight-normal mb-0">22,900 تومان</h4>
+                </div>
+                <div class="product-sold position-absolute">
+                    <div class="product-sold-val" style="width: 50%;"></div>
+                </div>
+                <span class="sold-text font-weight-normal text-light position-absolute">
+                    تعداد
+                    فروش :
+                    54
+                </span>
+                <div class="product-footer bg-white rounded-0 d-block position-absolute">
+                    <div class="ratings-container text-truncate">
+                        <div class="ratings">
+                            <div class="ratings-val" style="width: 40%;"></div>
+                            <a href="product.html" class="ratings-text font-weight-normal">
+                                (5
+                                رأی)
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-action d-flex justify-content-center flex-column align-items-center position-relative">
+                        <a href="#"
+                           class="btn btn-product font-weight-normal text-uppercase text-truncate btn-cart btn-outline-primary-2 btn-outline-primary-2">
+                            <span>
+                                افزودن
+                                به سبد خرید
+                            </span>
+                        </a>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        }
+}

@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BlogManagement.Infrastructure.EFCore\BlogManagement.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\CommentManagement.Domain\CommentManagement.Domain.csproj" />
+    <ProjectReference Include="..\DiscountManagement.Infrastructure.EFCore\DiscountManagement.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\SlideManagement.Infrastucture.EfCore\SlideManagement.Infrastucture.EfCore.csproj" />
     <ProjectReference Include="..\TrucksManagement.Application.contracts\TrucksManagement.Application.contracts.csproj" />
     <ProjectReference Include="..\TrucksManagement.Infrustructuer.EfCore\TrucksManagement.Infrustructuer.EfCore.csproj" />

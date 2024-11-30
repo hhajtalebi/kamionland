@@ -12,5 +12,6 @@ namespace KamionLandQuery.Contracts.Menu
         public List<MenuQueryViewModel> menuList();
         public List<TrkCategoryViewModel>? CategoryBase();
         public List<TrkCategoryViewModel>? CategoryBaseParent();
+        public List<TrkCategoryViewModel>? CategoryBaseParentNextOne();
     }
 }
