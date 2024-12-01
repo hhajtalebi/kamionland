@@ -27,5 +27,16 @@ namespace KamionLandQuery.Contracts.Trucks
         public string MetaDescription { get; set; }
         public string Slug { get; set; }
         public long CategoryId { get; set; }
+        
+        public string CategoryName { get; set; }
+
+        public double UnitPrice { get; set; }
+        public double TotalPrice { get; set; }
+        public string PriceWithDiscount { get; set; }
+        public int? DiscountRate { get; set; }
+        
+        public string CategorySlug { get; set; }
+
+
     }
 }

@@ -25,15 +25,7 @@ namespace KamionLandQuery.Contracts.TruckCategory
         public string? parentName { get; set; }
         public long ProductCount { get; set; }
 
-        public double UnitPrice { get; set; }
-        public double TotalPrice { get; set; }
-        public string PriceWithDiscount { get; set; }
-        public int? DiscountRate { get; set; }
-
-        public string Category { get; set; }
-        public string CategorySlug { get; set; }
-
-
+      
         public List<TruckQueryViewModel> Products { get; set; }
         public List<TruckPicturesQueryViewModel> TruckPictures { get; set; }
     }

@@ -12,6 +12,7 @@ using KamionLandQuery.Contracts.DiscountCoustomer;
 using KamionLandQuery.Querys;
 using KamionLandQuery.Contracts.Menu;
 using KamionLandQuery.Contracts.SlideTrucks;
+using KamionLandQuery.Contracts.TruckCategory;
 
 namespace KamionLandQuery.Services
 {
@@ -28,6 +29,8 @@ namespace KamionLandQuery.Services
             services.AddScoped<ICommentQuery, CommentQuery>();
             services.AddScoped<ICoustomerDiscountQuery, CoustomerDiscountQuery>();
 
+
+            services.AddScoped<ITrkCategoryQuery, TrkCategoryQuery>();
 
         }
     }
