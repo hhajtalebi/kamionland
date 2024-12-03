@@ -83,50 +83,8 @@
         <hr class="m-0">
         @await Component.InvokeAsync("CategoryBaseParent")
     </div>
-    <div class="flash-section bg-lighter">
-        <div class="container">
-            <div class="heading d-flex flex-column flex-md-row">
-                <h2 class="title align-self-center letter-spacing-normal text-center text-md-right">
-                    فروش
-                    ویژه
-                    امروز
-                </h2>
-                <div class="d-flex justify-content-center mt-1 mt-md-0">
-                    <h6 class="countdown-title align-self-center mb-0 font-weight-normal letter-spacing-normal">
-                        اتمام در :
-                    </h6>
-                    <div class="deal-countdown align-self-center" data-until="+10h" data-compact="true">
-                    </div>
-                </div>
-            </div>
-            <div class="flash-content mt-2 py-2 pb-7">
-                <div class="owl-carousel carousel-equal-height owl-simple rows cols-2 cols-md-3 cols-lg-4 cols-xl-6"
-                     data-toggle="owl" data-owl-options='{
-                                "nav": true,
-                                "dots": true,
-                                "loop": false,
-                                "margin": 0,
-                                "rtl": true,
-                            "responsive": {
-                                    "0": {
-                                        "items":2
-                                    },
-                                    "768": {
-                                        "items":3
-                                    },
-                                    "992": {
-                                        "items":4
-                                    },
-                                    "1200": {
-                                        "items":6
-                                    }
-                                }
-                            }'>
-                    @await Component.InvokeAsync("DiscountCoustomer")
-                </div>
-            </div>
-        </div>
-    </div>
+
+@await Component.InvokeAsync("DiscountCoustomer")
     <div class="brand-section mt-7 mb-6">
         <div class="container py-2 pt-0">
             <div class="owl-carousel owl-simple rows cols-2 cols-xs-3 cols-md-4 cols-lg-6" data-toggle="owl"

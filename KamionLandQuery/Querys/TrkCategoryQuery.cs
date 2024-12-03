@@ -129,7 +129,7 @@ namespace KamionLandQuery.Querys
                 keyword = x.keyword,
                 Products = MapProducts(x.Trucks),
                 ParentId = x.ParentId,
-            }).Where(x => x.ParentId == category.Id).ToList();
+            }).Where(x => x.Id == category.Id).ToList();
 
             return categoreis;
         }
