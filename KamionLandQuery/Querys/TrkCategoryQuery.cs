@@ -12,6 +12,7 @@ using TrucksManagement.Infrustructuer.EfCore;
 using MailChimp.Net.Models;
 using TrucksManagement.Domain.TruckAgg;
 using _0_Framework.Application;
+using TrucksManagement.Domain.TruckPictureAgg;
 
 namespace KamionLandQuery.Querys
 {
@@ -104,20 +105,24 @@ namespace KamionLandQuery.Querys
                 ShortDescription = product.ShortDescription,
                 MetaDescription = product.MetaDescription,
                 Keywords = product.Keywords,
+              
                 //CategoryName = product.Category.Name,
                 Slug = product.Slug,
                 
             }).ToList();
 
         }
+
+      
         public List<TrkCategoryQueryViewModel> GetTruckCategoryWithCategoryAndTrucks(string categorySlug)
         {
+            var pictures = _trcksContext.TruckPicture.ToList();
             var inventory = _inventoryContext.Invevntories.Select(i => new { i.ProductId, i.InitialPrice, i.UnitPrice })
                 .ToList();
             var Discount = _discountContext.CustomerDiscounts
                 .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now).Select(x => new { x.ProductId, x.DiscountRate }).ToList();
             var category = _trcksContext.TruckCategories.FirstOrDefault(x => x.Slug == categorySlug);
-            var categoreis = _trcksContext.TruckCategories.Include(x => x.Trucks).Select(x => new TrkCategoryQueryViewModel()
+            var categoreis = _trcksContext.TruckCategories.Include(x => x.Trucks).Where(x => x.Id == category.Id).Select(x => new TrkCategoryQueryViewModel()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -129,7 +134,46 @@ namespace KamionLandQuery.Querys
                 keyword = x.keyword,
                 Products = MapProducts(x.Trucks),
                 ParentId = x.ParentId,
-            }).Where(x => x.Id == category.Id).ToList();
+                
+            }).ToList();
+            foreach (var cat in categoreis)
+            {
+                foreach (var truck in cat.Products)
+                {
+                    var inventorysPrice = inventory.FirstOrDefault(x => x.ProductId == truck.Id);
+
+                    if (inventorysPrice != null)
+                    {
+                        truck.UnitPrice = Convert.ToDouble(inventorysPrice.UnitPrice);
+                        
+                        var discount = Discount.FirstOrDefault(x => x.ProductId == truck.Id);
+                        if (discount != null)
+                        {
+                            truck.DiscountRate = Discount.FirstOrDefault(x => x.ProductId == truck.Id)!.DiscountRate;
+
+                            var discountAmon = Math.Round(inventorysPrice.UnitPrice * Convert.ToDouble(truck.DiscountRate)) / 100;
+                            truck.PriceWithDiscount = (truck.UnitPrice - discountAmon).ToMoney();
+                        }
+                    }
+
+                }
+
+                if (cat.TruckPictures!=null)
+                {
+                    foreach (var pic in cat.TruckPictures)
+                    {
+
+                        pic.Id = pictures.FirstOrDefault(p => p.Id == pic.Id).Id;
+                        pic.PictureTitel = pictures.FirstOrDefault(p => p.Id == pic.Id).PictureTitel;
+                        pic.PictureAlte = pictures.FirstOrDefault(p => p.Id == pic.Id).PictureAlte;
+                        pic.PictureAverage = pictures.FirstOrDefault(p => p.Id == pic.Id).Picture;
+                        pic.PictureFull = pictures.FirstOrDefault(p => p.Id == pic.Id).Picture;
+                        pic.PictureThum = pictures.FirstOrDefault(p => p.Id == pic.Id).Picture;
+                    }
+                }
+               
+            }
+
 
             return categoreis;
         }
