@@ -50,9 +50,14 @@ namespace TrucksManagement.Application
             {
                 return resulte.Failed(ApplicationMeasages.DuplicatedRecord);
             }
+
+            if (command.PictureName!=null&&command.Picture!=null)
+            {
+                _fileUploader.Delete(command.PictureName);
+            }
             var slug = command.Slug.Slugify();
             var pathFilePicture = $"Picture";
-            var fileName = _fileUploader.Upload(command.Picture, pathFilePicture);
+            var fileName = _fileUploader.UploadNewSize(command.Picture, pathFilePicture,720);
             category.Edit(command.Name, command.Description, fileName, command.PictureAlt,
                 command.PictureTitel, command.keyword, command.MetaDescription, slug, command.ParentId);
            _truckCategoryRepository.SaveChanges();

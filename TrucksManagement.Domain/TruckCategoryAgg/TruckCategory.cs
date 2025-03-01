@@ -46,7 +46,7 @@ namespace TrucksManagement.Domain.TruckCategoryAgg
         {
             Name = name;
             Description = description;
-            if (Equals(!string.IsNullOrWhiteSpace(picture)))
+            if (!string.IsNullOrWhiteSpace(picture))
                  Picture = picture;
             PictureAlt = pictureAlt;
             PictureTitel = pictureTitel;
