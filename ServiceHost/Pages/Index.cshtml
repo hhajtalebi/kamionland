@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "صفحه اصلی";
 }
 <div class="page-content">
     <div class="intro-section bg-image"
@@ -24,36 +24,6 @@
     </div>
 
 @await Component.InvokeAsync("DiscountCoustomer")
-    <div class="brand-section mt-7 mb-6">
-        <div class="container py-2 pt-0">
-            <div class="owl-carousel owl-simple rows cols-2 cols-xs-3 cols-md-4 cols-lg-6" data-toggle="owl"
-                 data-owl-options='{
-                                "nav": true, "loop": false, "dots": false, "margin":5,"rtl": true,
-                            "responsive": {
-                                "0": {
-                                    "items":2
-                                },
-                                "480": {
-                                    "items":3
-                                },
-                                "768": {
-                                    "items":4
-                                },
-                                "992": {
-                                    "items":6
-                                }
-                            }
-                        }'>
-                <a href="#" class="brand"><img src="~/Pictures/logo/kamionland.jpg"></a>
-                <a href="#" class="brand"><img src="~/Pictures/logo/kamionland.jpg"></a>
-                <a href="#" class="brand"><img src="~/Pictures/logo/kamionland.jpg"></a>
-                <a href="#" class="brand"><img src="~/Pictures/logo/kamionland.jpg"></a>
-                <a href="#" class="brand"><img src="~/Pictures/logo/kamionland.jpg"></a>
-                <a href="#" class="brand"><img src="~/Pictures/logo/kamionland.jpg"></a>
-               
-            </div>
-        </div>
-    </div>
    
     <div class="bg-lighter blog-section pt-6 pb-5">
         <div class="container">
