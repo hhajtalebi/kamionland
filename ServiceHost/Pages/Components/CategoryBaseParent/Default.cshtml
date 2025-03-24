@@ -15,7 +15,7 @@
                             </a>
                         </div>
                         <div class="cat-content text-center">
-                            <a asp-page="/Trucks/Index" asp-route-slug="@item.Slug" class="cat-title">@item.Name</a>
+                            <a href="~/Trucks?slug=@item.Slug"  class="cat-title">@item.Name</a>
                             <h4 class="cat-count letter-spacing-normal d-block font-weight-light">
                                 @item.ProductCount محصول
                             </h4>

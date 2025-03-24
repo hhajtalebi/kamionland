@@ -176,13 +176,17 @@
                                             <div class="product-nav product-nav-thumbs">
                                                 @foreach (var categoryQuery in @Model.GetTrkCategories)
                                                 {
-                                                    @foreach (var pic in categoryQuery.TruckPictures)
+                                                    @if (categoryQuery.TruckPictures != null)
                                                     {
-                                                        <a href="#" class="active">
-                                                            <img src="/Pictures/@pic.PictureThum"
-                                                                 alt="product desc">
-                                                        </a>
+                                                        @foreach (var pic in categoryQuery.TruckPictures)
+                                                        {
+                                                            <a href="#" class="active">
+                                                                <img src="/Pictures/@pic.PictureThum"
+                                                                     alt="product desc">
+                                                            </a>
+                                                        }
                                                     }
+                                                   
                                                 }
                                               
                                                 <a href="#">
