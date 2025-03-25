@@ -9,6 +9,6 @@ public interface ITrucksApplication
     EditTruck GetDetails(long  id);
     public List<TruckViewModel> GetTrucks();
     public List<TruckViewModel>? GetTrucks(long categoryId);
-
+    public TruckViewModel? GetTruckBySlug(string slug);
 
 }

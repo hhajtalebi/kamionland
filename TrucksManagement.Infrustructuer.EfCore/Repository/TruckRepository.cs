@@ -24,6 +24,30 @@ namespace TrucksManagement.Infrustructuer.EfCore.Repository
 
         }
 
+        public TruckViewModel? GetTruckBySlug(string slug)
+        {
+            return _context.Trucks.Select(x => new TruckViewModel()
+            {
+                Id = x.Id,
+                PictureName = x.Picture,
+                CategoryId = x.CategoryId,
+                Code = x.Code,
+                Description = x.Description,
+                HasColor = x.HasColor,
+                Keywords = x.Keywords,
+                Manufacturer = x.Manufacturer,
+                MetaDescription = x.MetaDescription,
+                Name = x.Name,
+                PictureTitel = x.PictureTitel,
+                PrictureAlte = x.PrictureAlte,
+                ShortDescription = x.ShortDescription,
+                Slug = x.Slug,
+                TruckModel = x.TruckModel,
+                Year = x.Year,
+                color = x.color,
+                category = _context.TruckCategories.FirstOrDefault(c => c.Id == x.CategoryId).Name,
+            }).FirstOrDefault(x=>x.Slug==slug);
+        }
         public List<TruckViewModel> GetTrucks()
         {
             return _context.Trucks.Select(x => new TruckViewModel()

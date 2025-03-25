@@ -12,5 +12,6 @@ namespace KamionLandQuery.Contracts.Blogs.Blog.ArticelCategory
         public List<ArticelCategoryQueryModel> GetArticelCategorys();
         public List<ArticelCategoryQueryModel> GetArticelCategorysWithArticel();
         public ArticelCategoryQueryModel? GetArticelCategoryBySlug(string slug);
+        public List<ArticelCategoryQueryModel> GetArticelCategorys(long categoryId);
     }
 }

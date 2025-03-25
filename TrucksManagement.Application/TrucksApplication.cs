@@ -62,6 +62,10 @@ namespace TrucksManagement.Application
             return _truckRepository.GetDetails(id);
         }
 
+        public TruckViewModel? GetTruckBySlug(string slug)
+        {
+            return _truckRepository.GetTruckBySlug(slug);
+        }
         public List<TruckViewModel> GetTrucks()
         {
             return _truckRepository.GetTrucks();

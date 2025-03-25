@@ -47,7 +47,7 @@
                                <div class="product">
                                    <figure class="product-media">
                                        <span class="product-label label-new">جدید</span>
-                                       <a asp-page="/shohada/Detail" asp-route-slug="@truck.Slug">
+                                       <a asp-page="/Trucks/DetailTruck" asp-route-slug="@truck.Slug">
                                            <img src="/Pictures/@truck.PictureName" alt=" @truck.PrictureAlte" title="@truck.PictureTitel"
                                                 class="product-image">
                                        </a>
@@ -56,7 +56,7 @@
                                        <div class="product-cat">
                                            <a href="#">@truck.CategoryId</a>
                                        </div>
-                                       <h3 class="product-title"><a asp-page="/shohada/Detail" asp-route-slug="@truck.Slug">@truck.Name  </a></h3>
+                                    <h3 class="product-title"><a asp-page="/Trucks/DetailTruck" asp-route-slug="@truck.Slug">@truck.Name  </a></h3>
                                        <div class="ratings-container">
                                            <div class="ratings">
                                                <div class="ratings-val" style="width: 0%;"></div>

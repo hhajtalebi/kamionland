@@ -36,6 +36,28 @@ namespace KamionLandQuery.Querys
 
 
         }
+        public List<ArticelCategoryQueryModel> GetArticelCategorys(long categoryId)
+        {
+            return _context.ArticelCategories
+                .Where(x => x.Id == categoryId).Include(x => x.Articels)
+                .Select(x => new ArticelCategoryQueryModel
+                {
+                    Id = x.Id,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    ArticelCategoryCount = x.Articels.Count(),
+                    Slug = x.Slug,
+                    Description = x.Description,
+                    CanonicalAddress = x.CanonicalAddress,
+                    Keywords = x.Keywords,
+                    MetaDescription = x.MetaDescription,
+                    Name = x.Name,
+                    ShowOrder = x.ShowOrder,
+                }).ToList();
+
+
+        }
 
         public ArticelCategoryQueryModel? GetArticelCategoryBySlug(string slug)
         {

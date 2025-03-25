@@ -46,6 +46,12 @@ namespace ServiceHost.Pages.superpage
             if (articelCategory != null)
             {
                 articelcats = _articelApplication.GetArticelsByCategoryId(articelCategory.Id);
+
+                var aritcelcategoryparent = _articelCategory.GetArticelCategorys(articelCategory.Id);
+                foreach (var parentArticel in aritcelcategoryparent)
+                {
+                    articelcats.AddRange(_articelApplication.GetArticelsByCategoryId(parentArticel.Id));
+                }
             }
 
 
