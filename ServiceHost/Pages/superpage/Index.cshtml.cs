@@ -29,32 +29,21 @@ namespace ServiceHost.Pages.superpage
         public List<ArticelViewModel>? articelcats { get; set; }
         public void OnGet(string Slug)
         {
+          
             var category = _trkCategoryApplication.GetDetailes(Slug);
             var articelCategory = _articelCategory.GetArticelCategoryBySlug(Slug);
+
             if (category != null)
             {
-                Trucks = _trucksApplication.GetTrucks(category.Id);
-
-                var ListCategoryparent = _trkCategoryApplication.GetTrkCategorys(category.Id);
-                foreach (var lcp in ListCategoryparent)
-                {
-                    Trucks.AddRange(_trucksApplication.GetTrucks(lcp.Id));
-
-                }
+                var categories = _trkCategoryApplication.GetTrkCategorys(category.Id).Prepend(category);
+                Trucks = categories.SelectMany(c => _trucksApplication.GetTrucks(c.Id)).ToList();
             }
 
             if (articelCategory != null)
             {
-                articelcats = _articelApplication.GetArticelsByCategoryId(articelCategory.Id);
-
-                var aritcelcategoryparent = _articelCategory.GetArticelCategorys(articelCategory.Id);
-                foreach (var parentArticel in aritcelcategoryparent)
-                {
-                    articelcats.AddRange(_articelApplication.GetArticelsByCategoryId(parentArticel.Id));
-                }
+                var articleCategories = _articelCategory.GetArticelCategorys(articelCategory.Id).Prepend(articelCategory);
+                articelcats = articleCategories.SelectMany(ac => _articelApplication.GetArticelsByCategoryId(ac.Id)).ToList();
             }
-
-
         }
     }
 }
