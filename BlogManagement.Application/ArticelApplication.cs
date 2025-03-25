@@ -86,6 +86,10 @@ namespace BlogManagement.Application
 
         }
 
+        public List<ArticelViewModel>? GetArticelsByCategoryId(long categoryId)
+        {
+            return _articelRepository.GetArticelsByCategoryId(categoryId);
+        }
         public List<ArticelViewModel> Search(ArticelSearchModel searches)
         {
           return _articelRepository.Search(searches);

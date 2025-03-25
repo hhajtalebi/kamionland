@@ -14,7 +14,7 @@ namespace BlogManagement.Domain.ArticelAgg
         EditArticel? GetDetails(long id);
         List<ArticelViewModel> Search(ArticelSearchModel searches);
         public List<ArticelViewModel>? GetArticels();
-
+        public List<ArticelViewModel>? GetArticelsByCategoryId(long categoryId);
 
     }
 }

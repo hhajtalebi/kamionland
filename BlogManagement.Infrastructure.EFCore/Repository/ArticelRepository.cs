@@ -82,6 +82,26 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 .OrderByDescending(x => x.Id).ToList();
         }
 
+        public List<ArticelViewModel>? GetArticelsByCategoryId(long categoryId)
+        {
+            var query = _context.Articels.Where(x=>x.ArticelCategoryId==categoryId).Select(x => new ArticelViewModel()
+            {
+                PublishDate = x.PublishDate.ToFarsi(),
+                Title = x.Title,
+                Id = x.Id,
+                ShortDescription = x.ShortDescription,
+                articelCategory = x.ArticelCategory.Name,
+                articelCategoryId = x.ArticelCategoryId,
+                Picture = x.Picture,
+                Picturethum = x.Picturethum,
+
+                slug = x.Slug,
+
+            });
+
+            return query
+                .OrderByDescending(x => x.Id).ToList();
+        }
 
 
     }

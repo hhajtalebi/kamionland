@@ -1,4 +1,5 @@
 using blogManagement.Application.Contracts.ArticelApplication;
+using KamionLandQuery.Contracts.Blogs.Blog.ArticelCategory;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TrucksManagement.Application.contracts.TrkCategoryApplication;
 using TrucksManagement.Application.contracts.TrucksApplication;
@@ -11,14 +12,16 @@ namespace ServiceHost.Pages.superpage
         private readonly IArticelApplication _articelApplication;
         private readonly ITrucksApplication _trucksApplication;
         private readonly ITrkCategoryApplication _trkCategoryApplication;
+        private readonly IArticelCategory _articelCategory;
 
         public IndexModel(IArticelApplication articelApplication,
             ITrucksApplication trucksApplication,
-            ITrkCategoryApplication trkCategoryApplication)
+            ITrkCategoryApplication trkCategoryApplication, IArticelCategory articelCategory)
         {
             _articelApplication = articelApplication;
             _trucksApplication = trucksApplication;
             _trkCategoryApplication = trkCategoryApplication;
+            _articelCategory = articelCategory;
         }
 
 
@@ -27,36 +30,22 @@ namespace ServiceHost.Pages.superpage
         public void OnGet(string Slug)
         {
             var category = _trkCategoryApplication.GetDetailes(Slug);
+            var articelCategory = _articelCategory.GetArticelCategoryBySlug(Slug);
             if (category != null)
             {
-                
-                var trkcategory = _trkCategoryApplication.GetTrkCategorys();
+                Trucks = _trucksApplication.GetTrucks(category.Id);
 
-                foreach (var cta in trkcategory)
+                var ListCategoryparent = _trkCategoryApplication.GetTrkCategorys(category.Id);
+                foreach (var lcp in ListCategoryparent)
                 {
-                    Trucks=_trucksApplication.GetTrucks(cta.Id);
-
-
-                  
-                    articelcats = _articelApplication.GetArticels();
-
-                    var ListCategoryparent = _trkCategoryApplication.GetTrkCategorys(cta.Id);
-                    foreach (var lcp in ListCategoryparent)
-                    {
-                        Trucks.AddRange(_trucksApplication.GetTrucks(lcp.Id));
-
-
-
-                    }
+                    Trucks.AddRange(_trucksApplication.GetTrucks(lcp.Id));
 
                 }
+            }
 
-
-
-
-
-
-
+            if (articelCategory != null)
+            {
+                articelcats = _articelApplication.GetArticelsByCategoryId(articelCategory.Id);
             }
 
 
